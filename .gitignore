@@ -1,0 +1,21 @@
+# Poetry
+.poetry/
+.pyproject.toml
+poetry.lock
+
+# Database
+database.db
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Visual Studio Code
+.vscode/
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+release_with_hook.ps1
