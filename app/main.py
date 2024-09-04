@@ -12,9 +12,8 @@ uploaded_coordinates: list[tuple[float, float]] = []
 secret_key = os.environ.get("SECRET_KEY", None)
 
 @app.post("/upload_coordinates")
-async def upload_coordinates(request: Request,coordinates_lat_lon: list[tuple[float, float]]):
-    auth = request.headers.get("Authorization")
-    if auth != f"Bearer {secret_key}":
+async def upload_coordinates(request: Request,pw:str,coordinates_lat_lon: list[tuple[float, float]]):
+    if pw != secret_key:
         return {"message": "Invalid key"}
     uploaded_coordinates.clear()
     uploaded_coordinates.extend(coordinates_lat_lon)
