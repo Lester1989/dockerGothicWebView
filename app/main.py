@@ -23,6 +23,7 @@ async def upload_coordinates(request: Request,coordinates_lat_lon: list[tuple[fl
 
 @app.get("/gothic_tales_coordinates")
 async def render_template(request: Request):
+    print(uploaded_coordinates)
     return templates.TemplateResponse(
         "map.html", {"request": request, "coordinates": uploaded_coordinates}
     )
