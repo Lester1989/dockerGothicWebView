@@ -2,10 +2,12 @@ from fastapi import Depends, FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import Response
-
+import pathlib
 import app.auth as auth
 
-app = FastAPI()
+version = pathlib.Path("pyproject.toml").read_text(encoding="utf-8").splitlines()[2].split("=")[1].strip().strip('"')
+print(f"Running version {version}")
+app = FastAPI(version=version)
 templates = Jinja2Templates(directory="app/templates")
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
